@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>500 Internal Server Error</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .error-container {
+            max-width: 600px;
+        }
+        h5 {
+            font-size: 1.5rem;
+            color: #dc3545;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            font-size: 6rem;
+            margin: 0;
+            display: inline-block;
+            color: #6c757d;
+        }
+        .box {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+        .box span {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 3px;
+            background-color: #dc3545;
+            border-radius: 50%;
+            animation: blink 1.5s infinite;
+        }
+        .box span:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+        .box span:nth-child(3) {
+            animation-delay: 0.4s;
+        }
+        .box span:nth-child(4) {
+            animation-delay: 0.6s;
+        }
+        .box span:nth-child(5) {
+            animation-delay: 0.8s;
+        }
+        p {
+            font-size: 1.2rem;
+            margin-top: 1rem;
+        }
+        a {
+            text-decoration: none;
+            color: #dc3545;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+        a:hover {
+            color: #b02a37;
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 0.2;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-container">
+        <h5>Internal Server Error!</h5>
+        <h1>5</h1>
+        <h1>00</h1>
+        <div class="box">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <div class="box">
+            <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p>We're unable to figure out what's happening! We suggest you to<br>
+            <a href="/">Go Back</a> or visit later.</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>H & M The Wardrobe</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      .banner-section {
+        background: url("images/banner.jpg") no-repeat center center;
+        background-size: cover;
+        height: 100vh;
+        color: white;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+      }
+
+      .banner-section .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .banner-section::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 0;
+      }
+
+      .category-card {
+        transition: transform 0.3s;
+      }
+      .category-card:hover {
+        transform: translateY(-5px);
+      }
+
+      .feature-icon {
+        width: 4rem;
+        height: 4rem;
+        border-radius: 0.75rem;
+      }
+      footer ul li a {
+        color: white;
+        transition: color 0.3s ease-in-out;
+      }
+
+      footer ul li a:hover {
+        color: #ff6347;
+      }
+
+      footer .fab:hover {
+        color: #ff6347;
+      }
+
+      footer {
+        border-top: 4px solid #ff6347;
+      }
+
+      footer h5 {
+        color: #ff6347;
+      }
+
+      .category-img {
+        object-fit: fill;
+        height: 250px;
+      }
+
+      .category-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        height: 57vh;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .category-card:hover {
+        transform: scale(1.05);
+      }
+
+      .card-body {
+        background-color: rgba(250, 244, 244, 0.8);
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        border-radius: 0 0 10px 10px;
+      }
+
+      .card-title {
+        font-weight: bold;
+        font-size: 1.25rem;
+      }
+
+      .btn-outline-dark {
+        font-weight: bold;
+        text-transform: uppercase;
+        padding: 10px 20px;
+      }
+
+      
+      @media (min-width: 768px) {
+        .col-md-4 {
+          padding: 0 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Nav  -->
+    <nav
+      class="navbar navbar-expand-lg navbar-light bg-white shadow-sm sticky-top"
+    >
+      <div class="container">
+        <img
+          src="/images/logo.png"
+          alt=""
+          width="5%"
+          height="9%"
+          class="d-inline-block align-text-top"
+        />
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav me-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/shop">Shop</a>
+            </li>
+          </ul>
+
+          <div class="d-flex align-items-center">
+            <div class="dropdown">
+              <a
+                href="#"
+                class="btn btn-outline-dark me-2 dropdown-toggle"
+                id="userDropdown"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                <i class="fas fa-user"></i>
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                <li>
+                  <a class="dropdown-item" href="#" id="userName">Hello</a>
+                </li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="/signup" id="logoutBtn"
+                    >Logout</a
+                  >
+                </li>
+              </ul>
+            </div>
+
+            <a href="/cart" class="btn btn-dark">
+              <i class="fas fa-shopping-cart"></i>
+              <span class="badge bg-primary">
+                <%= cart.length > 0 ? cart.length : 0 %>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- banner Section -->
+    <section
+      class="banner-section text-center text-white d-flex align-items-center"
+    >
+      <div class="container">
+        <h1 class="display-4 fw-bold mb-4">Winter Collection 2024</h1>
+        <p class="lead mb-4">Uncover the top trends and exclusive discounts</p>
+        <a href="/shop" class="btn btn-light btn-lg px-4">Purchase now</a>
+      </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <h2
+          class="text-center mt-4 mb-2"
+          style="color: rgb(133, 19, 19); font-family: fantasy"
+        >
+          H&M
+        </h2>
+        <h3 class="text-center">Your Complete Store</h3>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="card category-card border-0 shadow-sm">
+              <img
+                src="/images/fitness_items.jpeg"
+                class="card-img-top category-img"
+                alt="Fitness"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">Fitness Items</h5>
+                <a href="/category/Fitness" class="btn btn-outline-dark"
+                  >View Collection</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card category-card border-0 shadow-sm">
+              <img
+                src="/images/electronics.jpg"
+                class="card-img-top category-img"
+                alt="Electronics"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">Electronics Items</h5>
+                <a href="/category/Electronics" class="btn btn-outline-dark"
+                  >View Collection</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="card category-card border-0 shadow-sm">
+              <img
+                src="/images/home&living.jpeg"
+                class="card-img-top category-img"
+                alt="Home & Living"
+              />
+              <div class="card-body text-center">
+                <h5 class="card-title">Home & Living</h5>
+                <a href="/category/Home & Living" class="btn btn-outline-dark"
+                  >View Collection</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features -->
+    <section class="py-5 bg-light">
+      <div class="container">
+        <div class="row g-4">
+          <a href="/cart" class="col-md-4 text-center text-decoration-none text-dark">
+            <div
+              class="feature-icon bg-dark text-white mx-auto mb-3 d-flex align-items-center justify-content-center"
+            >
+              <i class="fas fa-truck fa-2x"></i>
+            </div>
+            <h5>Free Shipping</h5>
+            <p class="text-muted">On orders over 1499</p>
+          </a>
+          <a href="/cart" class="col-md-4 text-center text-decoration-none text-dark">
+            <div
+              class="feature-icon bg-dark text-white mx-auto mb-3 d-flex align-items-center justify-content-center"
+            >
+              <i class="fas fa-undo fa-2x"></i>
+            </div>
+            <h5>Easy Returns</h5>
+            <p class="text-muted">15-day's return policy</p>
+          </a>
+          <a href="/cart" class="col-md-4 text-center text-decoration-none text-dark">
+            <div
+              class="feature-icon bg-dark text-white mx-auto mb-3 d-flex align-items-center justify-content-center"
+            >
+              <i class="fas fa-lock fa-2x"></i>
+            </div>
+            <h5>Secure Payment</h5>
+            <p class="text-muted">100% secure checkout</p>
+          </a>
+        </div>
+        
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-5">
+      <div class="container">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <h5
+              class="mb-3"
+              style="font-family: fantasy; color: #ff6347; font-size: 800"
+            >
+              H & M <br />The Wardrobe
+            </h5>
+            <p class="text-light">
+              Where style and innovation meet.discover what makes you stand out!
+            </p>
+          </div>
+
+          <div class="col-md-2">
+            <h5 class="mb-3">Shop</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none text-white"
+                  >New Arrivals</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-white"
+                  >Best Sellers</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-white">Deals</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-white"
+                  >Gift Cards</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-2">
+            <h5 class="mb-3">Support</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-decoration-none text-white">FAQ</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-white">Shipping</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-white">Returns</a>
+              </li>
+              <li>
+                <a href="#" class="text-decoration-none text-white"
+                  >Contact Us</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="col-md-4">
+            <h5 class="mb-3">Connect with Us</h5>
+            <div class="d-flex gap-3 mb-3">
+              <a
+                href="https://www.facebook.com"
+                class="text-white"
+                style="font-size: 1.5rem"
+              >
+                <i class="fab fa-facebook-f"></i>
+              </a>
+              <a
+                href="https://www.twitter.com"
+                class="text-white"
+                style="font-size: 1.5rem"
+              >
+                <i class="fab fa-twitter"></i>
+              </a>
+              <a
+                href="https://www.instagram.com"
+                class="text-white"
+                style="font-size: 1.5rem"
+              >
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a
+                href="https://www.pinterest.com"
+                class="text-white"
+                style="font-size: 1.5rem"
+              >
+                <i class="fab fa-pinterest"></i>
+              </a>
+            </div>
+            <p class="text-light">© 2024 H&M. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

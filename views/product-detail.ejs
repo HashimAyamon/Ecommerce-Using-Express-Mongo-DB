@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= product.name %> - Product Details</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #f8f9fa, #e9ecef);
+      font-family: 'Poppins', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    .product-container {
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .back-btn {
+      font-size: 1.1rem;
+      color: #28a745;
+      text-decoration: none;
+      margin-bottom: 20px;
+      display: inline-block;
+      border: 1px solid #28a745;
+      padding: 10px 30px;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #28a745;
+      color: white;
+    }
+
+    .product-title {
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: #333;
+      text-transform: capitalize;
+      margin-top: 20px;
+    }
+
+    .product-category {
+      color: #6c757d;
+      font-size: 1.2rem;
+      margin-top: -15px;
+    }
+
+    .product-description {
+      font-size: 1.2rem;
+      color: #495057;
+      margin-top: 20px;
+      line-height: 1.6;
+    }
+
+    .product-price {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #ff6347;
+      margin-top: 20px;
+    }
+
+    .product-image {
+      border-radius: 12px;
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
+      object-fit: cover;
+      height: 400px;
+    }
+
+    .product-image:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 60px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-details {
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    .product-details:hover {
+      transform: translateY(-10px);
+    }
+
+    .btn-add-to-cart {
+      font-size: 1.3rem;
+      padding: 12px 30px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-add-to-cart:hover {
+      background-color: #0056b3;
+      transform: scale(1.05);
+    }
+
+    .container {
+      padding-top: 60px;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container product-container">
+    
+    <a href="/" class="back-btn">
+      <i class="bi bi-arrow-left-circle"></i> Back to Home
+    </a>
+
+    <div class="row">
+      
+      <div class="col-md-6">
+        <img src="<%= product.imageUrl %>" class="img-fluid product-image" alt="<%= product.name %>">
+      </div>
+
+      <div class="col-md-6">
+        <div class="product-details">
+          <h2 class="product-title"><%= product.name %></h2>
+          <p class="product-category"><%= product.category %></p>
+          <p class="product-description"><%= product.description %></p>
+          <h4 class="product-price">$<%= product.price.toFixed(2) %></h4>
+          <button class="btn-add-to-cart add-to-cart" data-product-id="<%= product._id %>">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const addToCartButton = document.querySelector('.add-to-cart');
+      addToCartButton.addEventListener('click', async () => {
+        const productId = addToCartButton.getAttribute('data-product-id');
+        try {
+          const response = await fetch('/cart/add', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ productId })
+          });
+
+          const result = await response.json();
+          if (response.ok) {
+            alert(result.message);
+          } else {
+            alert('Error: ' + result.message);
+          }
+        } catch (error) {
+          console.error('Error:', error);
+        }
+      });
+    });
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

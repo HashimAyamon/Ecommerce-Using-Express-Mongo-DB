@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+}
+
+.sidebar {
+    width: 80px;
+    background-color: #001642;
+}
+
+.sidebar-item {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    transition: all 0.3s ease;
+    color: white;
+    border: 1.5px solid transparent; /* Set initial border */
+}
+
+.sidebar-item:hover,
+.sidebar-item.active {
+    border-color: white; /* Change border color on hover and active */
+}
+
+.sidebar-item .icon {
+    font-size: 18px;
+}
+
+.header2 {
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow for header */
+}
+
+.bg-main {
+    background-color: #f3f3f3; /* Set main content background color */
+}
+
+.input-group input {
+    height: 50px; /* Increase the height of the input field */
+}
+
+.list-group {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+}
+
+.list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+.list-group-item:hover {
+    box-shadow: 0 4px 6px rgba(33, 33, 33, 0.2); /* Add shadow effect on hover */
+}
